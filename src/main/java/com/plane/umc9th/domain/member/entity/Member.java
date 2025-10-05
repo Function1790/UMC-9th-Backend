@@ -6,6 +6,7 @@ import com.plane.umc9th.domain.member.enums.Gender;
 import com.plane.umc9th.domain.member.enums.Provider;
 import com.plane.umc9th.domain.member.enums.Status;
 import com.plane.umc9th.domain.mission.entity.Mission;
+import com.plane.umc9th.domain.notification.entity.Notification;
 import com.plane.umc9th.domain.review.entity.Review;
 import jakarta.persistence.*;
 import lombok.*;
@@ -19,6 +20,7 @@ import java.util.List;
 @NoArgsConstructor(access=AccessLevel.PROTECTED)
 @AllArgsConstructor(access=AccessLevel.PRIVATE)
 @Getter
+@Setter
 @Table(name="member")
 // TODO: + Restaurant Owner
 public class Member {
@@ -42,42 +44,26 @@ public class Member {
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<Review> reviews;
-    // Term, Review, Inquiry
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<Notification> notifications;
+    // Term, notification
 
     // Columns
-    @Column
     private String name;
-
-    @Column
     @Enumerated(EnumType.STRING)
     private Gender gender;
-
     @Column(columnDefinition = "DATE")
     private LocalDate birthDate;
-
-    @Column
     private String address;
-
-    @Column
     private String email;
-
-    @Column
     @Enumerated(EnumType.STRING)
     private Provider provider;
-
-    @Column
     private int point;
-
-    @Column
     private String phoneNumber;
-
-    @Column
     private boolean is_verified;
-
     @Column(columnDefinition = "DATETIME")
     private LocalDateTime inactive_date;
-
-    @Column
     @Enumerated(EnumType.STRING)
     private Status status;
 }
