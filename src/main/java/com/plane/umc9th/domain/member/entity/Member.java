@@ -33,6 +33,10 @@ public class Member {
     @JoinColumn(name = "settingId")
     private MemberSetting setting;
 
+    @OneToOne
+    @JoinColumn(name = "termId")
+    private Term term;
+
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<FoodCatergoryLikes> foodCatergoryLikes;
 
@@ -47,7 +51,6 @@ public class Member {
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<Notification> notifications;
-    // Term, notification
 
     // Columns
     private String name;
