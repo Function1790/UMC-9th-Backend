@@ -1,10 +1,12 @@
 package com.plane.umc9th.domain.member.entity;
 
 import com.plane.umc9th.domain.catergory.entity.FoodCatergory;
+import com.plane.umc9th.domain.inquiry.entity.Inquiry;
 import com.plane.umc9th.domain.member.enums.Gender;
 import com.plane.umc9th.domain.member.enums.Provider;
 import com.plane.umc9th.domain.member.enums.Status;
 import com.plane.umc9th.domain.mission.entity.Mission;
+import com.plane.umc9th.domain.review.entity.Review;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -34,6 +36,12 @@ public class Member {
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<Mission> missions;
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<Inquiry> inquiries;
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<Review> reviews;
     // Term, Review, Inquiry
 
     // Columns
