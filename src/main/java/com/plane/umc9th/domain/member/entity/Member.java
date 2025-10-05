@@ -4,6 +4,7 @@ import com.plane.umc9th.domain.catergory.entity.FoodCatergory;
 import com.plane.umc9th.domain.member.enums.Gender;
 import com.plane.umc9th.domain.member.enums.Provider;
 import com.plane.umc9th.domain.member.enums.Status;
+import com.plane.umc9th.domain.mission.entity.Mission;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -17,6 +18,7 @@ import java.util.List;
 @AllArgsConstructor(access=AccessLevel.PRIVATE)
 @Getter
 @Table(name="member")
+// TODO: + Restaurant Owner
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,7 +32,9 @@ public class Member {
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<FoodCatergoryLikes> foodCatergoryLikes;
 
-    // Term
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<Mission> missions;
+    // Term, Review, Inquiry
 
     // Columns
     @Column

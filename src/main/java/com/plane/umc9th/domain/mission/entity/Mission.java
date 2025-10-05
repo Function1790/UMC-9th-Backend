@@ -26,6 +26,9 @@ public class Mission extends BaseEntity {
     @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;
 
+    @Column
+    private String description;
+
     @Column(columnDefinition = "DATETIME")
     private LocalDateTime deadline;
 
