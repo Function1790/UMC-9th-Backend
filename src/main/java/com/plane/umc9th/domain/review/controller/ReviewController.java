@@ -6,6 +6,7 @@ import com.plane.umc9th.domain.review.entity.Review;
 import com.plane.umc9th.domain.review.service.ReviewService;
 import com.plane.umc9th.global.apiPayload.ApiResponse;
 import com.plane.umc9th.global.apiPayload.code.GeneralSuccessCode;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,7 +33,7 @@ public class ReviewController {
 
     @PostMapping()
     public ApiResponse<ReviewResDTO.CreateDTO> createReview(
-            @RequestBody ReviewReqDTO.CreateDTO dto) {
+            @RequestBody @Valid ReviewReqDTO.CreateDTO dto) {
         return ApiResponse.onSuccess(GeneralSuccessCode.CREATED, reviewService.create(dto));
     }
 }
