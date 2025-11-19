@@ -6,6 +6,7 @@ import com.plane.umc9th.domain.member.exception.code.MemberSuccessCode;
 import com.plane.umc9th.domain.member.repository.MemberRepository;
 import com.plane.umc9th.domain.member.service.command.MemberCommandService;
 import com.plane.umc9th.global.apiPayload.ApiResponse;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,7 +23,7 @@ public class MemberController {
     // 회원가입
     @PostMapping("/sign-up")
     public ApiResponse<MemberResDTO.JoinDTO> signUp(
-            @RequestBody MemberReqDTO.JoinDTO dto
+            @RequestBody @Valid MemberReqDTO.JoinDTO dto
     ){
         return ApiResponse.onSuccess(MemberSuccessCode.FOUND, memberCommandService.signup(dto));
     }

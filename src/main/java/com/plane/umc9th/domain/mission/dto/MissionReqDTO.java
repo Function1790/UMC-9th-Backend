@@ -1,0 +1,4 @@
+package com.plane.umc9th.domain.mission.dto;
+
+public class MissionReqDTO {
+}
